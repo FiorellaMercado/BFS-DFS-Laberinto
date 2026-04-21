@@ -1,0 +1,26 @@
+función resolver_dfs(matriz, x, y):
+
+    si matriz[x][y] es SALIDA:
+        devolver true
+
+    direcciones = [arriba(-1,0), abajo(1,0), derecha(0,1), izquierda(0,-1)]
+
+    para cada direccion (dx, dy):
+
+        nueva_x = x + dx
+        nueva_y = y + dy
+
+        si nueva_x está dentro de la matriz
+        y nueva_y está dentro de la matriz
+        y matriz[nueva_x][nueva_y] es CAMINO o SALIDA:
+
+            si matriz[nueva_x][nueva_y] no es SALIDA:
+                marcar matriz[nueva_x][nueva_y] como VISITADO
+
+            si resolver_dfs(matriz, nueva_x, nueva_y):
+                devolver true
+
+            si matriz[nueva_x][nueva_y] no es SALIDA:
+                desmarcar matriz[nueva_x][nueva_y] como CAMINO
+
+    devolver false
