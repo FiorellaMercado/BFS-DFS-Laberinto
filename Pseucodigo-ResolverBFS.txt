@@ -1,0 +1,44 @@
+función resolucion_bfs(tablero, entrada_x, entrada_y, salida_x, salida_y):
+
+    filas = cantidad de filas del tablero
+    columnas = cantidad de columnas del tablero
+
+    direcciones = [arriba(-1,0), abajo(1,0), izquierda(0,-1), derecha(0,1)]
+
+    crear matriz "visitado" de filas x columnas, toda en false
+    crear matriz "padre" de filas x columnas, toda en SIN_PADRE
+
+    crear cola vacía
+
+    encolar (entrada_x, entrada_y)
+    marcar visitado[entrada_x][entrada_y] = true
+
+    mientras la cola no esté vacía:
+
+        sacar el primero de la cola → (cx, cy)
+
+        si (cx, cy) es la salida:
+
+            (cx, cy) = padre[cx][cy]
+
+            mientras (cx, cy) no sea la entrada:
+
+                tablero[cx][cy] = RECORRIDO
+                (cx, cy) = padre[cx][cy]
+
+            devolver true
+
+        para cada direccion (dx, dy):
+
+            nx = cx + dx
+            ny = cy + dy
+
+            si (nx, ny) está dentro del tablero
+            y no fue visitado
+            y tablero[nx][ny] es CAMINO o SALIDA:
+
+                marcar visitado[nx][ny] = true
+                padre[nx][ny] = (cx, cy)
+                encolar (nx, ny)
+
+    devolver false
